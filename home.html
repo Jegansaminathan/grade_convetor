@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRADE CONVERTOR</title>
+    <style type="text/css">
+        * {
+            margin-left: 15%;
+            margin-right: 10%;
+            margin-top: 8%;
+            padding: 0%;
+            background-color: bisque;
+            box-sizing: border-box;
+        }
+        .gbox {
+            width: 50%;
+            height: auto;
+            border: 4px solid brown;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            background-color: rgba(50, 224, 134, 0.4);
+        }
+        .welc {
+            margin-left: 1px;
+            margin-right: 1px;
+            margin-top: 1px;
+            background-color: rgba(50, 224, 134, 0.0);
+        }
+        .welc .we {
+            border-radius: 20px;
+            margin-left: 3px;
+            margin-right: 3px;
+            margin-top: 5px;
+            font-size: 40px;
+            padding-left: 4px;
+            background-color: rgba(50, 224, 134, 0.0);
+        }
+        .welc .ne {
+            border-radius: 20px;
+            margin-left: 3px;
+            margin-right: 3px;
+            margin-top: 5px;
+            padding: 10px;
+            background-color: rgba(176, 160, 39, 0.7);
+        }
+        .sp {
+            margin: auto;
+            background-color: rgba(245, 220, 27, 0);
+            color: orangered;
+        }
+        .mark {
+            background-color: rgba(93, 154, 122, 0);
+            width: 350px;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .mark label {
+            background-color: rgba(245, 220, 27, 0);
+            font-weight: bolder;
+            font-size: large;
+            margin-right: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gbox">
+        <div class="welc" id="chname">
+            <p class="we">WELCOME NAME</p>
+            <p class="ne" style="color: rgb(11, 162, 56);">YOU CAN CHECK THE GRADE HERE<span class="sp"> BY ENTERING YOUR MARK</span></p>
+        </div>
+        <form action="" id="evaluv" style="margin-left:1px; margin-right:1px;margin-top: 1px;background-color: rgba(50, 224, 134, 0.0); ">
+            <div class="mark">
+                <label>ENGLISH</label>
+                <input type="number" id="inp1" value="" placeholder="enter your mark" style="margin-left: 1px; width: 160px; height: 60px;border-radius: 20px;font-size: larger;padding-left: 8px;" min="0" max="100" step="0.01" required>
+                <p id="fr1" style="height: 60px;width: 240px; font-size: large;margin-top: 10px;padding-top: 20px; padding-left: 30px;border-radius: 10px;background-color: #d09561;">Your grade</p>
+            </div>
+            <div class="mark">
+                <label>TAMIL</label>
+                <input type="number" id="inp2" value="" placeholder="enter your mark" style="margin-left: 1px; width: 160px; height: 60px;border-radius: 20px;font-size: larger;padding-left: 8px;" min="0" max="100" step="0.01" required>
+                <p id="fr2" style="height: 60px;width: 240px; font-size: large;margin-top: 10px;padding-top: 20px; padding-left: 30px;border-radius: 10px;background-color: #d09561;">Your grade </p>
+            </div>
+            <div class="mark">
+                <label>MATHS</label>
+                <input type="number" id="inp3" value="" placeholder="enter your mark" style="margin-left: 1px; width: 160px; height: 60px;border-radius: 20px;font-size: larger;padding-left: 8px;" min="0" max="100" step="0.01" required>
+                <p id="fr3" style="height: 60px;width: 240px; font-size: large;margin-top: 10px;padding-top: 20px; padding-left: 30px;border-radius: 10px;background-color: #d09561;">Your grade </p>
+            </div>
+            <div class="mark">
+                <label>SCIENCE</label>
+                <input type="number" id="inp4" value="" placeholder="enter your mark" style="margin-left: 1px; width: 160px; height: 60px;border-radius: 20px;font-size: larger;padding-left: 8px;" min="0" max="100" step="0.01" required>
+                <p id="fr4" style="height: 60px;width: 240px; font-size: large;margin-top: 10px;padding-top: 20px; padding-left: 30px;border-radius: 10px;background-color: #d09561;">Your grade </p>
+            </div>
+            <p id="averageGrade" style="height: 60px;width: 240px; font-size: large;margin-top: 10px;padding-top: 20px;padding-bottom: 10px; padding-left: 30px;border-radius: 10px;background-color: #d09561;">Your average grade is result</p>
+            <input type="submit" style="width: 300px; height:50px;margin-bottom: 20px;margin-top: 2px;border-radius: 60px;" value="SUBMIT" id="val">
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var theval = localStorage.getItem('username');
+            if (theval) {
+                document.querySelector('.we').innerText = 'WELCOME ' + theval;
+            }
+        });
+
+        function getGrade(mark) {
+            if (mark <= 100 && mark > 90) {
+                return 'A';
+            } else if (mark <= 90 && mark > 80) {
+                return 'B';
+            } else if (mark <= 80 && mark > 70) {
+                return 'C';
+            } else if (mark <= 70 && mark > 60) {
+                return 'D';
+            } else if (mark <= 60 && mark >=50) {
+                return 'E';
+            } else {
+                return 'U';
+            }
+        }
+
+        document.getElementById('evaluv').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var num1 = document.getElementById('inp1').value;
+            var num2 = document.getElementById('inp2').value;
+            var num3 = document.getElementById('inp3').value;
+            var num4 = document.getElementById('inp4').value;
+
+            var grade1 = getGrade(num1);
+            var grade2 = getGrade(num2);
+            var grade3 = getGrade(num3);
+            var grade4 = getGrade(num4);
+
+            document.getElementById('fr1').innerText = 'Your grade in english ' + grade1;
+            document.getElementById('fr2').innerText = 'Your grade in tamil ' + grade2;
+            document.getElementById('fr3').innerText = 'Your grade in maths ' + grade3;
+            document.getElementById('fr4').innerText = 'Your grade in science ' + grade4;
+
+            var average = (parseFloat(num1) + parseFloat(num2) + parseFloat(num3) + parseFloat(num4)) / 4;
+            var averageGrade = getGrade(average);
+            document.getElementById('averageGrade').innerText = 'Your average is'+ average +'and grade is ' + averageGrade;
+        });
+    </script>
+</body>
+</html>
